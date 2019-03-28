@@ -1,0 +1,11 @@
+书店图书租赁管理系统的设计与开发
+https://wenku.baidu.com/view/b27cc3d826fff705cc170a62.html?pn=50
+
+通过JDBC进行简单的增删改查（以MySQL为例）
+https://www.cnblogs.com/wuyuegb2312/p/3872607.html#tittle2
+
+Eclipse连接MySQL数据库
+https://www.cnblogs.com/caiwenjing/p/8079227.html
+
+图书管理系统-动态设计
+https://wenku.baidu.com/view/87ed131431126edb6e1a100e.html

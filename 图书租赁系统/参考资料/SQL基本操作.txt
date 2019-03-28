@@ -1,0 +1,12 @@
+https://www.cnblogs.com/wuyuegb2312/p/3872607.html#tittle2
+
+
+在上述对数据库进行增删改查的过程中，可以发现其共性部分，即通用的流程：
+
+　　(1)创建Connection对象、SQL查询命令字符串；
+
+　　(2)对Connection对象传入SQL查询命令，获得PreparedStatement对象；
+
+　　(3)对PreparedStatement对象执行executeUpdate()或executeQurey()获得结果；
+
+　　(4)先后关闭PreparedStatement对象和Connection对象。
