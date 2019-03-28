@@ -45,8 +45,11 @@ public class DataTest {
 						char tmpChar[] = new char[40];
 						
 						tmpChar = tmp.toCharArray();
+						
+//						System.out.println(tmpChar);
+						
 						tmpChar[19] = '\0';
-						tmp = tmpChar.toString();
+						tmp = new String(tmpChar, 0, 19);
 						
 						System.out.println(tmp);
 					}
