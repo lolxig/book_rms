@@ -27,6 +27,7 @@ public class ConnectionUnify {
 		try {
 			Class.forName(driver);
 			conn = (Connection) DriverManager.getConnection(url, username, password);
+			System.out.println("Debug: MySQL link success.");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Debug: Error loading Mysql Driver!");
 			e.printStackTrace();
@@ -34,7 +35,6 @@ public class ConnectionUnify {
 			System.out.println("Debug: Error connect mysql server!");
 			e.printStackTrace();
 		}
-		System.out.println("Debug: MySQL link success.");
 		return conn;
 	}
 

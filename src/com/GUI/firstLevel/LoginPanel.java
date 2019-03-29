@@ -1,4 +1,4 @@
-package com.GUI;
+package com.GUI.firstLevel;
 
 
 import java.awt.*;
@@ -28,6 +28,7 @@ import javax.swing.*;
  * 				暴露两个button，让驱动来操作按钮
  * 
  * note: 通过测试
+ * 
  * complete time: 2019-3-29 16:28:10
  * 
  *

@@ -1,4 +1,4 @@
-package com.GUI;
+package com.GUI.firstLevel;
 
 /**
  * 

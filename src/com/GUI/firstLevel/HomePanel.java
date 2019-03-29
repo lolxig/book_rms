@@ -1,4 +1,4 @@
-package com.GUI;
+package com.GUI.firstLevel;
 
 import java.awt.*;
 import javax.swing.*;
@@ -18,9 +18,10 @@ import javax.swing.*;
  * 按钮功能管理，全部交给最上层的frame来管理，即，返回所有按钮
  * 
  * note: 已通过测试
+ * 
  * complete time: 2019-3-29 17:48:15
  * 
- *
+ * 
  */
 
 public class HomePanel extends JPanel {
@@ -127,11 +128,7 @@ public class HomePanel extends JPanel {
 		this.add(infoSearch);
 		this.add(exitSystem);
 		
-		
 		this.setBackground(new Color(MyScreen.colorOfPage));
 	}
-	
-	
-	
-	
+
 }

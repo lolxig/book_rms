@@ -4,12 +4,15 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import com.GUI.HomePanel;
-import com.GUI.LoginPanel;
-import com.GUI.MyScreen;
+import com.GUI.firstLevel.BookManagementPanel;
+import com.GUI.firstLevel.HomePanel;
+import com.GUI.firstLevel.InfoSearchPanel;
+import com.GUI.firstLevel.LoginPanel;
+import com.GUI.firstLevel.MemberManagementPanel;
+import com.GUI.firstLevel.MyScreen;
 
 
-public class PanelTest extends  JFrame{
+public class PanelTest extends  JFrame {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -18,9 +21,15 @@ public class PanelTest extends  JFrame{
 	
 	public PanelTest() {
 		
-		this.add(new LoginPanel(), BorderLayout.CENTER);
+//		this.add(new LoginPanel(), BorderLayout.CENTER);
 		
 //		this.add(new HomePanel(), BorderLayout.CENTER);
+		
+//		this.add(new MemberManagementPanel(), BorderLayout.CENTER);
+		
+//		this.add(new BookManagementPanel(), BorderLayout.CENTER);
+		
+//		this.add(new InfoSearchPanel(), BorderLayout.CENTER);
 		
 		
 		
