@@ -18,5 +18,5 @@ public interface JDBCOpetation {
 	public void update();			// 更新
 	public void select();			// 查询
 	public void delete();			// 删除操作
-
+	
 }
