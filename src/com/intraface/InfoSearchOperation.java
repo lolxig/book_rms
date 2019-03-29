@@ -1,13 +1,10 @@
 package com.intraface;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.databaseOperation.JDBCOpetation;
+import com.databaseOperation.ConnectionUnify;
 import com.infoSearch.InfoSearchOfBook;
 import com.infoSearch.InfoSearchOfBorrow;
 import com.infoSearch.InfoSearchOfHistory;
@@ -29,64 +26,69 @@ import com.memberClass.Book;
  * note: 测试通过
  * complete time: 2019-3-28 18:38:16
  * 
+ * *******************************************************************************************
+ * 
+ * note: 结构调整，数据库连接统一管理
+ * time: 2019-3-29 17:06:26
+ * 
  */
 
 public class InfoSearchOperation {
 	
-	private JDBCOpetation jdbcOpetation = null;
-	private Connection connection = null;
+//	private JDBCOpetation jdbcOpetation = null;
+//	private Connection connection = null;
 	
 	// 构造函数
 	public InfoSearchOperation() {
-		jdbcOpetation = new JDBCOpetation() {
-			
-			@Override
-			public void update() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void select() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void insert() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public Connection getConnection() {
-				// TODO Auto-generated method stub
-				String driver = "com.mysql.jdbc.Driver";
-				String url = "jdbc:mysql://localhost:3306/book_rms?useUnicode=true&characterEncoding=GBK";
-				String username = "root";
-				String password = "xigua123";
-				Connection conn = null;
-				
-				try {
-					Class.forName(driver);
-					conn = (Connection) DriverManager.getConnection(url, username, password);
-				} catch (ClassNotFoundException e) {
-					System.out.println("Debug: Error loading Mysql Driver!");
-					e.printStackTrace();
-				} catch (SQLException e) {
-					System.out.println("Debug: Error connect mysql server!");
-					e.printStackTrace();
-				}
-				System.out.println("Debug: MySQL link success.");
-				return conn;
-			}
-			
-			@Override
-			public void delete() {
-				// TODO Auto-generated method stub
-				
-			}
-		};
+//		jdbcOpetation = new JDBCOpetation() {
+//			
+//			@Override
+//			public void update() {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void select() {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void insert() {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public Connection getConnection() {
+//				// TODO Auto-generated method stub
+//				String driver = "com.mysql.jdbc.Driver";
+//				String url = "jdbc:mysql://localhost:3306/book_rms?useUnicode=true&characterEncoding=GBK";
+//				String username = "root";
+//				String password = "xigua123";
+//				Connection conn = null;
+//				
+//				try {
+//					Class.forName(driver);
+//					conn = (Connection) DriverManager.getConnection(url, username, password);
+//				} catch (ClassNotFoundException e) {
+//					System.out.println("Debug: Error loading Mysql Driver!");
+//					e.printStackTrace();
+//				} catch (SQLException e) {
+//					System.out.println("Debug: Error connect mysql server!");
+//					e.printStackTrace();
+//				}
+//				System.out.println("Debug: MySQL link success.");
+//				return conn;
+//			}
+//			
+//			@Override
+//			public void delete() {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//		};
 	}
 	
 	// 查询会员
@@ -94,12 +96,12 @@ public class InfoSearchOperation {
 		
 		ArrayList<InfoSearchOfMember> members = new ArrayList<InfoSearchOfMember>();
 		
-		connection = jdbcOpetation.getConnection();
+//		connection = jdbcOpetation.getConnection();
 		PreparedStatement psmt = null;
 		
 		try {
 			String sql = "select * from member";
-			psmt = (PreparedStatement) connection.prepareStatement(sql);
+			psmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
 				
@@ -112,7 +114,7 @@ public class InfoSearchOperation {
 				
 				// 获取会员书籍信息
 				sql = "select * from borrow where member_id='" + isMember.getMemberId() + "'";
-				psmt = (PreparedStatement) connection.prepareStatement(sql);
+				psmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 				ResultSet rsTmp = psmt.executeQuery();
 				ArrayList<Book> books = new ArrayList<Book>();		
 				while (rsTmp.next()) {
@@ -127,7 +129,7 @@ public class InfoSearchOperation {
 				members.add(isMember);
 			}
 			psmt.close();
-			connection.close();
+//			connection.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -142,12 +144,12 @@ public class InfoSearchOperation {
 		
 		ArrayList<InfoSearchOfBook> books = new ArrayList<InfoSearchOfBook>();
 		
-		connection = jdbcOpetation.getConnection();
+//		connection = jdbcOpetation.getConnection();
 		PreparedStatement psmt = null;
 		
 		try {
 			String sql = "select * from book";
-			psmt = (PreparedStatement) connection.prepareStatement(sql);
+			psmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
 				
@@ -162,7 +164,7 @@ public class InfoSearchOperation {
 				books.add(isBook);
 			}
 			psmt.close();
-			connection.close();
+//			connection.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -177,12 +179,12 @@ public class InfoSearchOperation {
 		
 		ArrayList<InfoSearchOfBorrow> borrows = new ArrayList<InfoSearchOfBorrow>();
 		
-		connection = jdbcOpetation.getConnection();
+//		connection = jdbcOpetation.getConnection();
 		PreparedStatement psmt = null;
 		
 		try {
 			String sql = "select * from borrow";
-			psmt = (PreparedStatement) connection.prepareStatement(sql);
+			psmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
 				
@@ -196,7 +198,7 @@ public class InfoSearchOperation {
 				borrows.add(isBorrow);
 			}
 			psmt.close();
-			connection.close();
+//			connection.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -211,12 +213,12 @@ public class InfoSearchOperation {
 		
 		ArrayList<InfoSearchOfHistory> histories = new ArrayList<InfoSearchOfHistory>();
 		
-		connection = jdbcOpetation.getConnection();
+//		connection = jdbcOpetation.getConnection();
 		PreparedStatement psmt = null;
 		
 		try {
 			String sql = "select * from history";
-			psmt = (PreparedStatement) connection.prepareStatement(sql);
+			psmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
 				
@@ -233,7 +235,7 @@ public class InfoSearchOperation {
 				histories.add(isHistory);
 			}
 			psmt.close();
-			connection.close();
+//			connection.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.GUI.HomePanel;
 import com.GUI.LoginPanel;
 import com.GUI.MyScreen;
 
@@ -17,8 +18,9 @@ public class PanelTest extends  JFrame{
 	
 	public PanelTest() {
 		
-		
 		this.add(new LoginPanel(), BorderLayout.CENTER);
+		
+//		this.add(new HomePanel(), BorderLayout.CENTER);
 		
 		
 		

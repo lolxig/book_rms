@@ -1,5 +1,7 @@
 package com.main;
 
+import com.databaseOperation.ConnectionUnify;
+
 /**
  * 
  * @author xig
@@ -12,8 +14,18 @@ package com.main;
 public class BookRentalManagementSystem {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		new BookRentalManagementSystem();
+	}
+	
+	public BookRentalManagementSystem() {
 		
+		// 连接数据库
+		ConnectionUnify.connection = ConnectionUnify.getConnection();
+		
+		init();
+	}
+	
+	private void init() {
 		
 		
 	}

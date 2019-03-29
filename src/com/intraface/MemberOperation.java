@@ -1,11 +1,9 @@
 package com.intraface;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
+import com.databaseOperation.ConnectionUnify;
 import com.databaseOperation.JDBCOpetation;
 import com.memberClass.Book;
 import com.memberClass.Member;
@@ -40,6 +38,11 @@ import com.memberClass.Member;
  * note: 测试通过
  * complete time: 2019-3-27 21:44:04
  * 
+ * ******************************************************************************************
+ * 
+ * note: 结构调整，数据库连接统一管理
+ * time: 2019-3-29 17:06:57
+ * 
  */
 
 public class MemberOperation {
@@ -47,7 +50,7 @@ public class MemberOperation {
 	private Member member = null;
 	private Book book = null;
 	private JDBCOpetation jdbcOpetation = null;
-	private Connection connection = null;
+//	private Connection connection = null;
 	
 	// 构造函数
 	public MemberOperation() {
@@ -59,23 +62,23 @@ public class MemberOperation {
 			@Override
 			public void update() {		
 				// TODO Auto-generated method stub
-				connection = jdbcOpetation.getConnection();
+//				connection = jdbcOpetation.getConnection();
 				PreparedStatement pstmt;
 				
 				try {
 					// 更新借阅表
 					String sql = "insert into borrow values('" + member.getId() + "', '" + member.getName() + "', '" + book.getId() + "', '" + book.getName() + "')";
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					pstmt.executeUpdate();
 					
 					// 更新历史记录表
 					sql = "insert into history(type, member_id, member_name, book_id, book_name) values('" + "借书" + "', '" + member.getId() + "', '" + member.getName() + "', '" + book.getId() + "', '" + book.getName() + "')";
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					pstmt.executeUpdate();
 					
 					// 更新库存
 					sql = "select * from book where id='" + book.getId() + "'";
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					ResultSet rs = pstmt.executeQuery();
 					rs.next();
 //					String bookStock = rs.getString(5);
@@ -85,12 +88,12 @@ public class MemberOperation {
 					System.out.println();
 */					
 					sql= "update book set stock='" + String.valueOf(Integer.valueOf(rs.getString(5))-1) + "' where id='" + book.getId() + "'";
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					pstmt.executeUpdate();
 					
 					System.out.println("Debug: Borrow book success.");
 					pstmt.close();
-					connection.close();
+//					connection.close();
 				} catch (Exception e) {
 					// TODO: handle exception
 					e.printStackTrace();
@@ -101,32 +104,32 @@ public class MemberOperation {
 			@Override
 			public void select() {		
 				// TODO Auto-generated method stub
-				connection = jdbcOpetation.getConnection();
+//				connection = jdbcOpetation.getConnection();
 				PreparedStatement pstmt;
 				
 				try {
 					// 更新借阅表
 					String sql= "delete from borrow where member_id='" + member.getId() + "' and member_name='" + member.getName() + "' and book_id='" + book.getId() + "' and book_name='" + book.getName() + "'";
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					pstmt.executeUpdate();
 					
 					// 更新借阅历史表
 					sql = "insert into history(type, member_id, member_name, book_id, book_name) values('" + "还书" + "', '" + member.getId() + "', '" + member.getName() + "', '" + book.getId() + "', '" + book.getName() + "')";
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					pstmt.executeUpdate();
 					
 					// 更新库存量
 					sql = "select * from book where id='" + book.getId() + "'";
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					ResultSet rs = pstmt.executeQuery();
 					rs.next();
 					sql= "update book set stock='" + String.valueOf(Integer.valueOf(rs.getString(5))+1) + "' where id='" + book.getId() + "'";
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					pstmt.executeUpdate();
 					
 					System.out.println("Debug: Return book success.");
 					pstmt.close();
-					connection.close();
+//					connection.close();
 				} catch (Exception e) {
 					// TODO: handle exception
 					e.printStackTrace();
@@ -137,63 +140,63 @@ public class MemberOperation {
 			@Override
 			public void insert() {		
 				// TODO Auto-generated method stub
-				connection = jdbcOpetation.getConnection();
+//				connection = jdbcOpetation.getConnection();
 				String sql = "insert into member(name, phone) values(?, ?)";
 				PreparedStatement pstmt;
 				
 				try {
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					pstmt.setString(1, member.getName());
 					pstmt.setString(2, member.getPhone());
 					pstmt.executeUpdate();
 					
 					System.out.println("Debug: Open count success.");
 					pstmt.close();
-					connection.close();	
+//					connection.close();	
 				} catch (Exception e) {
 					// TODO: handle exception
 					e.printStackTrace();
 				}
 			}
 			
-			@Override
-			public Connection getConnection() {
-				// TODO Auto-generated method stub
-				String driver = "com.mysql.jdbc.Driver";
-				String url = "jdbc:mysql://localhost:3306/book_rms?useUnicode=true&characterEncoding=GBK";
-				String username = "root";
-				String password = "xigua123";
-				Connection conn = null;
-				
-				try {
-					Class.forName(driver);
-					conn = (Connection) DriverManager.getConnection(url, username, password);
-				} catch (ClassNotFoundException e) {
-					System.out.println("Debug: Error loading Mysql Driver!");
-					e.printStackTrace();
-				} catch (SQLException e) {
-					System.out.println("Debug: Error connect mysql server!");
-					e.printStackTrace();
-				}
-				System.out.println("Debug: MySQL link success.");
-				return conn;
-			}
+//			@Override
+//			public Connection getConnection() {
+//				// TODO Auto-generated method stub
+//				String driver = "com.mysql.jdbc.Driver";
+//				String url = "jdbc:mysql://localhost:3306/book_rms?useUnicode=true&characterEncoding=GBK";
+//				String username = "root";
+//				String password = "xigua123";
+//				Connection conn = null;
+//				
+//				try {
+//					Class.forName(driver);
+//					conn = (Connection) DriverManager.getConnection(url, username, password);
+//				} catch (ClassNotFoundException e) {
+//					System.out.println("Debug: Error loading Mysql Driver!");
+//					e.printStackTrace();
+//				} catch (SQLException e) {
+//					System.out.println("Debug: Error connect mysql server!");
+//					e.printStackTrace();
+//				}
+//				System.out.println("Debug: MySQL link success.");
+//				return conn;
+//			}
 			
 			// 注销接口
 			@Override
 			public void delete() {		
 				// TODO Auto-generated method stub
-				connection = jdbcOpetation.getConnection();
+//				connection = jdbcOpetation.getConnection();
 				String sql = "delete from member where id='" + member.getId() + "' and name='" + member.getName() + "'";
 				PreparedStatement pstmt;
 				
 				try {
-					pstmt = (PreparedStatement) connection.prepareStatement(sql);
+					pstmt = (PreparedStatement) ConnectionUnify.connection.prepareStatement(sql);
 					pstmt.executeUpdate();
 					
 					System.out.println("Debug: Delete count success.");
 					pstmt.close();
-					connection.close();
+//					connection.close();
 				} catch (Exception e) {
 					// TODO: handle exception
 					e.printStackTrace();

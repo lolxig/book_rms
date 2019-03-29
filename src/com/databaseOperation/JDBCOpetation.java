@@ -12,7 +12,7 @@ import java.sql.Connection;
 
 public interface JDBCOpetation {
 	
-	public Connection getConnection();		// 获取连接
+//	public Connection getConnection();		// 获取连接
 	
 	public void insert();			// 插入
 	public void update();			// 更新

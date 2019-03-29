@@ -136,7 +136,7 @@ public class LoginPanel extends JPanel {
 					exit = null;
 	
 	// password获取接口
-	public String getPassword() {
+	public String getEnterPassword() {
 		return String.valueOf(pwd.getPassword());
 	}
 	
