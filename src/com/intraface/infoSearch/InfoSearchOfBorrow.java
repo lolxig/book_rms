@@ -1,19 +1,10 @@
-package com.memberClass;
+package com.intraface.infoSearch;
 
-/**
- * @author xig
- * 
- * description: 借阅类，保存借阅信息
- * 	
- * 				属性：会员号，书籍号
- *
- */
-
-public class Borrow {
+public class InfoSearchOfBorrow {
 	
 	private String memberId;		// 会员号
 	private String memberName;		// 会员名
-	private String bookId;			// 书籍号
+	private String bookId;			// 书号
 	private String bookName;		// 书名
 	
 	public String getMemberId() {
@@ -40,7 +31,5 @@ public class Borrow {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	
-	
 	
 }

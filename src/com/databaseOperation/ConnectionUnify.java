@@ -8,7 +8,7 @@ import java.sql.SQLException;
  * 
  * @author xig
  * 
- * 结构更改，统一管理数据库连接
+ * description: 结构更改，统一管理数据库连接
  *
  */
 

@@ -183,10 +183,10 @@ public class LoginPanel extends JPanel {
 		
 		
 		/* 画密码框 */
-		JPasswordField password = new JPasswordField();
+		pwd = new JPasswordField();
 		
-		password.setBounds(270, 170, 120, 30);
-		password.setOpaque(true);
+		pwd.setBounds(270, 170, 120, 30);
+		pwd.setOpaque(true);
 		
 		
 		/* 画登陆按钮 */
@@ -213,7 +213,7 @@ public class LoginPanel extends JPanel {
 		/* 组件添加到Panel */
 		this.add(title);
 		this.add(note);
-		this.add(password);
+		this.add(pwd);
 		this.add(login);
 		this.add(exit);
 		
