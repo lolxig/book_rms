@@ -13,7 +13,8 @@ import javax.swing.*;
 
 public class JTableTest extends JFrame {
 
-	private String[][] data = {{"编号一","数据一"}, {"编号二","数据二"},
+	private String[][] data = {
+								{"编号一","数据一"}, {"编号二","数据二"},
 								{"编号三","数据三"}, {"编号四","数据四"},
 								{"编号五","数据五"}, {"编号六","数据六"},
 								{"编号七","数据七"}, {"编号八","数据八"},

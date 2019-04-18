@@ -10,6 +10,10 @@ import com.GUI.firstLevel.InfoSearchPanel;
 import com.GUI.firstLevel.LoginPanel;
 import com.GUI.firstLevel.MemberManagementPanel;
 import com.GUI.firstLevel.MyScreen;
+import com.GUI.infoSearch.BookInfoSearchPanel;
+import com.GUI.infoSearch.BorrowInfoSearchPanel;
+import com.GUI.infoSearch.HistoryInfoSearchPanel;
+import com.GUI.infoSearch.MemberInfoSearchPanel;
 import com.GUI.secondLevel.AddBook;
 import com.GUI.secondLevel.BorrowBookPanel;
 import com.GUI.secondLevel.ChangePasswordPanel;
@@ -17,6 +21,8 @@ import com.GUI.secondLevel.DeleteBook;
 import com.GUI.secondLevel.DeleteCountPanel;
 import com.GUI.secondLevel.OpenCountPanel;
 import com.GUI.secondLevel.ReturnBookPanel;
+import com.databaseOperation.ConnectionUnify;
+import com.intraface.intraface.InfoSearchOperation;
 
 
 public class PanelTest extends  JFrame {
@@ -27,6 +33,8 @@ public class PanelTest extends  JFrame {
 	}
 	
 	public PanelTest() {
+		
+		ConnectionUnify.connection = ConnectionUnify.getConnection();
 		
 //		this.add(new LoginPanel(), BorderLayout.CENTER);
 		
@@ -52,6 +60,13 @@ public class PanelTest extends  JFrame {
 		
 //		this.add(new DeleteBook(), BorderLayout.CENTER);
 		
+//		this.add(new MemberInfoSearchPanel(new InfoSearchOperation().searchMember()));
+		
+//		this.add(new BookInfoSearchPanel(new InfoSearchOperation().searchBook()));
+		
+//		this.add(new BorrowInfoSearchPanel(new InfoSearchOperation().searchBorrow()));
+		
+		this.add(new HistoryInfoSearchPanel(new InfoSearchOperation().searchHistory()));
 		
 		
 		

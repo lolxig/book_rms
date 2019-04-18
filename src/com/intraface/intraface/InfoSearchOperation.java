@@ -175,7 +175,7 @@ public class InfoSearchOperation {
 		return books;
 	}
 	
-	//²éÑ¯½èÔÄ
+	// ²éÑ¯½èÔÄ
 	public ArrayList<InfoSearchOfBorrow> searchBorrow() {
 		
 		ArrayList<InfoSearchOfBorrow> borrows = new ArrayList<InfoSearchOfBorrow>();
