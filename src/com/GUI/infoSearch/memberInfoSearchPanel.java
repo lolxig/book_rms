@@ -1,5 +1,7 @@
 package com.GUI.infoSearch;
 
+import javax.swing.JButton;
+
 /**
  * 
  * @author xig
@@ -13,5 +15,8 @@ package com.GUI.infoSearch;
  */
 
 public class memberInfoSearchPanel {
-
+	
+	private JButton returnButton = null;
+	
+	
 }
