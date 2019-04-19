@@ -24,7 +24,7 @@ import com.GUI.firstLevel.MyScreen;
  *
  */
 
-public class AddBook extends JPanel {
+public class AddBookPanel extends JPanel {
 	
 	private JTextArea bookName = null,		// 书名
 					  authorName = null,	// 作者
@@ -59,7 +59,7 @@ public class AddBook extends JPanel {
 	}
 	
 	// 构造，画界面
-	public AddBook() {
+	public AddBookPanel() {
 		initGUI();
 	}
 	

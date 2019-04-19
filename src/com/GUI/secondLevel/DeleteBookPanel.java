@@ -24,7 +24,7 @@ import com.GUI.firstLevel.MyScreen;
  */
 
 
-public class DeleteBook extends JPanel {
+public class DeleteBookPanel extends JPanel {
 	
 	private JTextArea bookId = null,		// 书号
 			  		  bookName = null;		// 书名
@@ -49,7 +49,7 @@ public class DeleteBook extends JPanel {
 	}
 	
 	// 构造，画界面
-	public DeleteBook() {
+	public DeleteBookPanel() {
 		initGUI();
 	}
 	

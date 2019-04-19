@@ -14,10 +14,10 @@ import com.GUI.infoSearch.BookInfoSearchPanel;
 import com.GUI.infoSearch.BorrowInfoSearchPanel;
 import com.GUI.infoSearch.HistoryInfoSearchPanel;
 import com.GUI.infoSearch.MemberInfoSearchPanel;
-import com.GUI.secondLevel.AddBook;
+import com.GUI.secondLevel.AddBookPanel;
 import com.GUI.secondLevel.BorrowBookPanel;
 import com.GUI.secondLevel.ChangePasswordPanel;
-import com.GUI.secondLevel.DeleteBook;
+import com.GUI.secondLevel.DeleteBookPanel;
 import com.GUI.secondLevel.DeleteCountPanel;
 import com.GUI.secondLevel.OpenCountPanel;
 import com.GUI.secondLevel.ReturnBookPanel;
@@ -66,7 +66,7 @@ public class PanelTest extends  JFrame {
 		
 //		this.add(new BorrowInfoSearchPanel(new InfoSearchOperation().searchBorrow()));
 		
-		this.add(new HistoryInfoSearchPanel(new InfoSearchOperation().searchHistory()));
+//		this.add(new HistoryInfoSearchPanel(new InfoSearchOperation().searchHistory()));
 		
 		
 		
