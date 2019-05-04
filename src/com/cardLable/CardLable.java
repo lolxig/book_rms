@@ -13,6 +13,7 @@ public class CardLable {
 	
 	// firstLevel
 	final public static String BOOK_MANAGEMENT_PANEL = "bookManagementPanel",
+							   EXIT_SYSTEM_PANEL = "exitSystemPanel",
 							   HOME_PANEL = "homePanel",
 							   INFO_SEARCH_PANEL = "infoSearchPanel",
 							   LOGIN_PANEL = "loginPanel",

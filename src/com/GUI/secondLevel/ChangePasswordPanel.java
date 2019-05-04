@@ -22,6 +22,11 @@ import com.GUI.firstLevel.MyScreen;
  * note: 已通过测试
  * complete time: 2019-3-31 13:16:03
  * 
+ * ************************************************************************************
+ * 
+ * change: 添加一个清除，画两个提示lable
+ * time: 2019-4-19 16:59:58
+ * 
  */
 
 public class ChangePasswordPanel extends JPanel {
@@ -29,30 +34,60 @@ public class ChangePasswordPanel extends JPanel {
 	private JPasswordField formerPassword = null,		// 旧密码
 						   newPassword = null,			// 新密码
 						   verifyPassword = null;		// 确认新密码
+	
 	private JButton yesButton = null,					// 确认按钮
 					backOf = null;						// 返回上一层
+	
+	private JLabel wrongPassword = null,				// 输入密码不正确
+				   wrongVerifyPassword = null,			// 两次输入不一致
+				   changeSuccessNote = null;			// 修改成功提示
 	
 	// 返回输入的旧密码
 	public String getEnterFormerPassword() {
 		return String.valueOf(formerPassword.getPassword());
 	}
+	
 	// 返回输入的新密码
 	public String getEnterNewPassword() {
 		return String.valueOf(newPassword.getPassword());
 	}
+	
 	// 返回输入的确认密码
 	public String getEnterVerifyPassword() {
 		return String.valueOf(verifyPassword.getPassword());
 	}
+	
+	// 清除输入框
+	public void clearEnterArea() {
+		formerPassword.setText("");
+		newPassword.setText("");
+		verifyPassword.setText("");
+	}
+	
 	// 返回确认按钮
 	public JButton getYesButton() {
 		return yesButton;
 	}
+	
 	// 返回返回上一层按钮
 	public JButton getBackOf() {
 		return backOf;
 	}
 	
+	// 返回wrongPasswordLable
+	public JLabel getWrongPasswordLable() {
+		return wrongPassword;
+	}
+	
+	// 返回wrongVerifyPasswordLable
+	public JLabel getWrongVerifyPasswordLable() {
+		return wrongVerifyPassword;
+	}
+	
+	// 返回changeSuccessNoteLable
+	public JLabel getChangeSuccessNote() {
+		return changeSuccessNote;
+	}
 	
 	// 构造，画界面
 	public ChangePasswordPanel() {
@@ -146,6 +181,39 @@ public class ChangePasswordPanel extends JPanel {
 		backOf.setForeground(Color.WHITE);
 		
 		
+		/* 旧密码错误 */
+		wrongPassword = new JLabel("密码错误");
+		
+		wrongPassword.setBounds(400, 135, 90, 30);
+		wrongPassword.setOpaque(true);
+		wrongPassword.setForeground(Color.RED);
+		wrongPassword.setBackground(new Color(MyScreen.colorOfPage));
+		wrongPassword.setFont(new Font("宋体", Font.PLAIN, 16));
+		wrongPassword.setVisible(false);
+		
+		
+		/* 两次输入不一致 */
+		wrongVerifyPassword = new JLabel("两次输入不一致");
+		
+		wrongVerifyPassword.setBounds(400, 235, 150, 30);
+		wrongVerifyPassword.setOpaque(true);
+		wrongVerifyPassword.setForeground(Color.RED);
+		wrongVerifyPassword.setBackground(new Color(MyScreen.colorOfPage));
+		wrongVerifyPassword.setFont(new Font("宋体", Font.PLAIN, 16));
+		wrongVerifyPassword.setVisible(false);
+		
+		
+		/* 修改成功提示 */
+		changeSuccessNote = new JLabel("密码修改成功");
+		
+		changeSuccessNote.setBounds(400, 235, 150, 30);
+		changeSuccessNote.setOpaque(true);
+		changeSuccessNote.setForeground(Color.RED);
+		changeSuccessNote.setBackground(new Color(MyScreen.colorOfPage));
+		changeSuccessNote.setFont(new Font("宋体", Font.PLAIN, 16));
+		changeSuccessNote.setVisible(false);
+		
+		
 		/* 组件添加到Panel */
 		this.add(title);
 		this.add(formerPasswordNote);
@@ -154,6 +222,10 @@ public class ChangePasswordPanel extends JPanel {
 		this.add(newPassword);
 		this.add(verifyPasswordNote);
 		this.add(verifyPassword);
+		
+		this.add(wrongPassword);
+		this.add(wrongVerifyPassword);
+		this.add(changeSuccessNote);
 		
 		this.add(yesButton);
 		this.add(backOf);

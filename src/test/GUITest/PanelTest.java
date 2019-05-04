@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import com.GUI.firstLevel.BookManagementPanel;
+import com.GUI.firstLevel.ExitSystemPanel;
 import com.GUI.firstLevel.HomePanel;
 import com.GUI.firstLevel.InfoSearchPanel;
 import com.GUI.firstLevel.LoginPanel;
@@ -56,11 +57,11 @@ public class PanelTest extends  JFrame {
 		
 //		this.add(new ReturnBookPanel(), BorderLayout.CENTER);
 		
-//		this.add(new AddBook(), BorderLayout.CENTER);
+//		this.add(new AddBookPanel(), BorderLayout.CENTER);
 		
-//		this.add(new DeleteBook(), BorderLayout.CENTER);
+//		this.add(new DeleteBookPanel(), BorderLayout.CENTER);
 		
-//		this.add(new MemberInfoSearchPanel(new InfoSearchOperation().searchMember()));
+		this.add(new MemberInfoSearchPanel(new InfoSearchOperation().searchMember()));
 		
 //		this.add(new BookInfoSearchPanel(new InfoSearchOperation().searchBook()));
 		
@@ -68,7 +69,7 @@ public class PanelTest extends  JFrame {
 		
 //		this.add(new HistoryInfoSearchPanel(new InfoSearchOperation().searchHistory()));
 		
-		
+//		this.add(new ExitSystemPanel(), BorderLayout.CENTER);
 		
 		
 		

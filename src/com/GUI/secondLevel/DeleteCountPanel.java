@@ -25,26 +25,42 @@ import com.GUI.firstLevel.MyScreen;
 
 public class DeleteCountPanel extends JPanel {
 	
-	private JTextArea memberId = null,	// 会员号
+	private JTextArea memberId = null,		// 会员号
 					  memberName = null;	// 会员名
 	private JButton yesButton = null,		// 确认
 					backOf = null;			// 返回
+	
+	private JLabel deleteSuccessNote = null;	// 注销成功提示
 	
 	// 返回输入的会员号
 	public String getEnterMemberId() {
 		return memberId.getText();
 	}
+	
 	// 返回输入的会员名
 	public String getEnterMemberName() {
 		return memberName.getText();
 	}
+	
 	// 返回确认按钮
 	public JButton getYesButton() {
 		return yesButton;
 	}
+	
 	// 返回返回按钮
 	public JButton getBackOf() {
 		return backOf;
+	}
+	
+	// 返回注销成功提示
+	public JLabel getDeleteSuccessNoteLable() {
+		return deleteSuccessNote;
+	}
+	
+	// 清除输入框
+	public void clearEnterArea() {
+		memberId.setText("");
+		memberName.setText("");
 	}
 	
 	// 构造，画界面
@@ -122,12 +138,25 @@ public class DeleteCountPanel extends JPanel {
 		backOf.setForeground(Color.WHITE);
 		
 		
+		/* 开户成功注销提示 */
+		deleteSuccessNote = new JLabel("注销成功");
+		
+		deleteSuccessNote.setBounds(400, 220, 90, 30);
+		deleteSuccessNote.setOpaque(true);
+		deleteSuccessNote.setForeground(Color.RED);
+		deleteSuccessNote.setBackground(new Color(MyScreen.colorOfPage));
+		deleteSuccessNote.setFont(new Font("宋体", Font.PLAIN, 16));
+		deleteSuccessNote.setVisible(false);
+		
+		
 		/* 组件添加到Panel */
 		this.add(title);
 		this.add(memberIdEnterNote);
 		this.add(memberId);
 		this.add(memberNameEnterNote);
 		this.add(memberName);
+		
+		this.add(deleteSuccessNote);
 		
 		this.add(yesButton);
 		this.add(backOf);

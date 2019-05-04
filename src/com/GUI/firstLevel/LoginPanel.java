@@ -135,10 +135,22 @@ public class LoginPanel extends JPanel {
 	private JPasswordField pwd = null;
 	private JButton login = null,
 					exit = null;
+	private JLabel wrongPassword = null;
 	
 	// password获取接口
 	public String getEnterPassword() {
 		return String.valueOf(pwd.getPassword());
+	}
+	
+	// wrongPassword获取接口
+	public JLabel getWrongPassword() {
+		return wrongPassword;
+	}
+	
+	// 清空密码输入框
+	public void clearPasswordArea() {
+		pwd.setText("");
+		pwd.requestFocus();				// 清空后获取焦点
 	}
 	
 	// 返回login按钮
@@ -210,12 +222,24 @@ public class LoginPanel extends JPanel {
 		exit.setForeground(Color.WHITE);
 		
 		
+		/* 密码错误提示 */
+		wrongPassword = new JLabel("密码错误");
+		
+		wrongPassword.setBounds(270, 205, 200, 30);
+		wrongPassword.setOpaque(true);
+		wrongPassword.setForeground(Color.RED);
+		wrongPassword.setBackground(new Color(MyScreen.colorOfPage));
+		wrongPassword.setFont(new Font("宋体", Font.BOLD, 16));
+		wrongPassword.setVisible(false);		
+		
+		
 		/* 组件添加到Panel */
 		this.add(title);
 		this.add(note);
 		this.add(pwd);
 		this.add(login);
 		this.add(exit);
+		this.add(wrongPassword);
 		
 		this.setBackground(new Color(MyScreen.colorOfPage));
 	}

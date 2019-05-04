@@ -28,8 +28,11 @@ public class DeleteBookPanel extends JPanel {
 	
 	private JTextArea bookId = null,		// 书号
 			  		  bookName = null;		// 书名
+	
 	private JButton yesButton = null,		// 确认
 					backOf = null;			// 返回
+	
+	private JLabel successNote = null;		// 操作成功提示	
 	
 	// 返回书号
 	public String getBookId() {
@@ -46,6 +49,17 @@ public class DeleteBookPanel extends JPanel {
 	// 返回返回按钮
 	public JButton getBackOf() {
 		return backOf;
+	}
+	
+	// 返回successNote
+	public JLabel getSuccessNote() {
+		return successNote;
+	}
+	
+	// 清空输入框
+	public void clearEnterArea() {
+		bookId.setText("");
+		bookName.setText("");
 	}
 	
 	// 构造，画界面
@@ -87,7 +101,7 @@ public class DeleteBookPanel extends JPanel {
 		
 		
 		/* 书名输入提示 */
-		JLabel bookNameEnterNote = new JLabel("作者");
+		JLabel bookNameEnterNote = new JLabel("书名");
 		
 		bookNameEnterNote.setBounds(170, 180, 90, 30);
 		bookNameEnterNote.setOpaque(true);
@@ -124,6 +138,17 @@ public class DeleteBookPanel extends JPanel {
 		backOf.setForeground(Color.WHITE);
 		
 		
+		/* 操作成功提示 */
+		successNote = new JLabel("删除成功");
+		
+		successNote.setBounds(400, 180, 90, 30);
+		successNote.setOpaque(true);
+		successNote.setForeground(Color.RED);
+		successNote.setBackground(new Color(MyScreen.colorOfPage));
+		successNote.setFont(new Font("宋体", Font.PLAIN, 16));
+		successNote.setVisible(false);
+		
+		
 		/* 组件添加到Panel */
 		this.add(title);
 		this.add(bookIdEnterNote);
@@ -133,6 +158,8 @@ public class DeleteBookPanel extends JPanel {
 		
 		this.add(yesButton);
 		this.add(backOf);
+		
+		this.add(successNote);
 		
 		this.setBackground(new Color(MyScreen.colorOfPage));
 		

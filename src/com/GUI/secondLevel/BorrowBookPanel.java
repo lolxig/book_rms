@@ -31,8 +31,11 @@ public class BorrowBookPanel extends JPanel {
 					  memberName = null,	// 会员名
 					  bookId = null,		// 书号
 					  bookName = null;		// 书名
+	
 	private JButton yesButton = null,		// 确认
 					backOf = null;			// 返回
+	
+	private JLabel successNote = null;		// 借书成功提示
 	
 	// 返回会员ID
 	public String getEnterMemberId() {
@@ -57,6 +60,19 @@ public class BorrowBookPanel extends JPanel {
 	// 返回返回按钮
 	public JButton getBackOf() {
 		return backOf;
+	}
+	
+	// 清除输出框
+	public void clearEnterArea() {
+		memberId.setText("");
+		memberName.setText("");
+		bookId.setText("");
+		bookName.setText("");
+	}
+	
+	// 返回successNoteLable
+	public JLabel getSuccessNoteLable() {
+		return successNote;
 	}
 	
 	// 构造，画界面
@@ -169,6 +185,17 @@ public class BorrowBookPanel extends JPanel {
 		backOf.setForeground(Color.WHITE);
 		
 		
+		/* 借书成功提示 */
+		successNote = new JLabel("借书成功");
+		
+		successNote.setBounds(400, 250, 90, 30);
+		successNote.setOpaque(true);
+		successNote.setForeground(Color.RED);
+		successNote.setBackground(new Color(MyScreen.colorOfPage));
+		successNote.setFont(new Font("宋体", Font.PLAIN, 16));
+		successNote.setVisible(false);
+		
+		
 		/* 组件添加到Panel */
 		this.add(title);
 		this.add(memberIdEnterNote);
@@ -179,6 +206,8 @@ public class BorrowBookPanel extends JPanel {
 		this.add(bookId);
 		this.add(bookNameEnterNote);
 		this.add(bookName);
+		
+		this.add(successNote);
 		
 		this.add(yesButton);
 		this.add(backOf);

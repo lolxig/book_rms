@@ -30,11 +30,14 @@ public class AddBookPanel extends JPanel {
 					  authorName = null,	// 作者
 					  press = null,			// 出版社
 					  amount = null;		// 数量
+	
 	private JButton yesButton = null,		// 确认
 					backOf = null;			// 返回
 	
+	private JLabel successNote = null;		// 操作成功提示
+	
 	// 返回书名
-	public String getBookId() {
+	public String getBookName() {
 		return bookName.getText();
 	}
 	// 返回作者名
@@ -56,6 +59,19 @@ public class AddBookPanel extends JPanel {
 	// 返回返回按钮
 	public JButton getBackOf() {
 		return backOf;
+	}
+	
+	// 返回操作成功提示框
+	public JLabel getSuccessNote() {
+		return successNote;
+	}
+	
+	// 清空输入框
+	public void clearEnterArea() {
+		bookName.setText("");
+		authorName.setText("");
+		press.setText("");
+		amount.setText("");
 	}
 	
 	// 构造，画界面
@@ -168,6 +184,17 @@ public class AddBookPanel extends JPanel {
 		backOf.setForeground(Color.WHITE);
 		
 		
+		/* 添加成功提示 */
+		successNote = new JLabel("添加成功");
+		
+		successNote.setBounds(400, 250, 90, 30);
+		successNote.setOpaque(true);
+		successNote.setForeground(Color.RED);
+		successNote.setBackground(new Color(MyScreen.colorOfPage));
+		successNote.setFont(new Font("宋体", Font.PLAIN, 16));
+		successNote.setVisible(false);
+		
+		
 		/* 组件添加到Panel */
 		this.add(title);
 		this.add(bookNameEnterNote);
@@ -181,6 +208,8 @@ public class AddBookPanel extends JPanel {
 		
 		this.add(yesButton);
 		this.add(backOf);
+		
+		this.add(successNote);
 		
 		this.setBackground(new Color(MyScreen.colorOfPage));
 	}

@@ -27,24 +27,41 @@ public class OpenCountPanel extends JPanel {
 	
 	private JTextArea memberName = null,	// 会员名
 					  memberPhone = null;	// 会员手机号
+	
 	private JButton yesButton = null,		// 确认
 					backOf = null;			// 返回
+	
+	private JLabel openCountSuccess = null;	// 开户成功提示
 	
 	// 返回输入的会员名
 	public String getEnterMemberName() {
 		return memberName.getText();
 	}
+	
 	// 返回输入的会员手机号
 	public String getEnterMemberPhone() {
 		return memberPhone.getText();
 	}
+	
 	// 返回确认按钮
 	public JButton getYesButton() {
 		return yesButton;
 	}
+	
 	// 返回返回按钮
 	public JButton getBackOf() {
 		return backOf;
+	}
+	
+	// 返回openCountSuccessLable
+	public JLabel getOpenCountSuccess() {
+		return openCountSuccess;
+	}
+	
+	// 清除输入框
+	public void clearEnterArea() {
+		memberName.setText("");
+		memberPhone.setText("");
 	}
 	
 	// 构造，画界面
@@ -122,12 +139,25 @@ public class OpenCountPanel extends JPanel {
 		backOf.setForeground(Color.WHITE);
 		
 		
+		/* 开户成功提示 */
+		openCountSuccess = new JLabel("开户成功");
+		
+		openCountSuccess.setBounds(400, 220, 90, 30);
+		openCountSuccess.setOpaque(true);
+		openCountSuccess.setForeground(Color.RED);
+		openCountSuccess.setBackground(new Color(MyScreen.colorOfPage));
+		openCountSuccess.setFont(new Font("宋体", Font.PLAIN, 16));	
+		openCountSuccess.setVisible(false);
+		
+		
 		/* 组件添加到Panel */
 		this.add(title);
 		this.add(memberNameEnterNote);
 		this.add(memberName);
 		this.add(memberPhoneEnterNote);
 		this.add(memberPhone);
+		
+		this.add(openCountSuccess);
 		
 		this.add(yesButton);
 		this.add(backOf);
